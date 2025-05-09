@@ -1,10 +1,10 @@
-from Flask import Flask, render_template, flash
+from flask import Flask, render_template, flash
 
 app = Flask(__name__)
 
-@routes.route('/')
+@app.route('/')
 def index():
-    return
+    return render_template('pagina-base-entrar.html')
 
 if __name__ == '__main__':
     app.run()
