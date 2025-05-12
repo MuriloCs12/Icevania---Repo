@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
 html, body {
@@ -23,6 +24,11 @@ h1.crie-conta{
     color: #45B4EB;
 }
 
-.conteudo-pag-registrar{
-    gap: 250px;
+.conteudo-pag-registrar h2{
+    color: #45B4EB
+}
+
+.conteudo-pag-registrar label{
+    font-size: 20px;
+    font-weight: 600;
 }
