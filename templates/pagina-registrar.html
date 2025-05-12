@@ -1,0 +1,33 @@
+{%extends 'pagina-base-entrar.html'%}
+
+{% block titulo %} 
+    Registre-se
+{% endblock %}
+
+{%block conteudo%}
+    <div class="conteudo-pag-registrar d-flex justify-content-center w-100">
+        <div class="d-flex flex-column align-items-center">
+            <img src="/static/img/Logo.svg" alt="">
+            <h1 class="kanit crie-conta fw-bold">Crie sua conta!</h1>
+        </div>
+        <div>
+            <form action="" class="d-flex flex-column"> 
+                <label for="username">Nome de usuário</label>
+                <input type="text" id="username" name="username">
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha">
+
+                <label for="">Confirmar Senha</label>
+                <input type="password">
+
+                <input type="submit" value="Registrar">
+            </form>
+            <p>Já tem uma conta? <a href="#">Entrar</a></p>
+        </div>
+    </div>
+    
+{%endblock%}

@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+.body-entrar {
+    background-color: #171717;
+}
+
+.onda-entrar{
+    width: 576px;
+}
+
+.kanit {
+    font-family: "Kanit", sans-serif;
+}
+
+h1.crie-conta{
+    color: #45B4EB;
+}
+
+.conteudo-pag-registrar{
+    gap: 250px;
+}
