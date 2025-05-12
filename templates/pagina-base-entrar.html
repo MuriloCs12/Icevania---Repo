@@ -17,19 +17,15 @@
 
 </head>
 <body class="body-entrar">
-    <section class="w-100 h-100 position-relative">
-        <div>
-            <div>
-                <img class="onda-entrar" src="/static/img/onda-superior-esquerdo.svg" alt="">
-            </div>
-            <div class="position-absolute bottom-0 end-0">
+    <section class="w-100 h-100">
+        <div class="position-relative">
+            <img class="onda-entrar position-absolute" src="/static/img/onda-superior-esquerdo.svg" alt="">
+        </div>
+        <div class="position-absolute bottom-0 end-0">
                 <img class="onda-entrar" src="/static/img/onda-inferior-direito.svg" alt="">
             </div>
-        </div>
-        <div class="w-100 d-flex align-items-center justify-content-center">
-            {%block conteudo%}
-            {%endblock%}
-        </div>
+        {%block conteudo%}
+        {%endblock%}
     </section>
 </body>
 </html>

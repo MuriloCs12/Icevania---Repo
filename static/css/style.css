@@ -32,3 +32,17 @@ h1.crie-conta{
     font-size: 20px;
     font-weight: 600;
 }
+
+.conteudo-pag-registrar form input {
+    height: 40px;
+    background: #302F2F;
+}
+
+.conteudo-pag-registrar .jatemconta a{
+    color: #45B4EB;
+}
+
+.conteudo-pag-registrar .botao_registrar{
+    background: #45B4EB;
+    height: 40px;
+}
