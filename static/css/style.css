@@ -20,29 +20,39 @@ html, body {
     font-family: "Kanit", sans-serif;
 }
 
-h1.crie-conta{
+h1.crie-conta, h1.entre-conta{
     color: #45B4EB;
+}
+
+h1.entre-conta{
+    font-size: 32px;
 }
 
 .conteudo-pag-registrar h2{
     color: #45B4EB
 }
 
-.conteudo-pag-registrar label{
+.conteudo-pag-registrar label, .conteudo-pag-login label{
     font-size: 20px;
     font-weight: 600;
 }
 
-.conteudo-pag-registrar form input {
+.conteudo-pag-registrar form input, .conteudo-pag-login form input {
     height: 40px;
     background: #302F2F;
+    outline: none;
 }
 
-.conteudo-pag-registrar .jatemconta a{
+.conteudo-pag-login form input {
+    background:  #171717;
+}
+
+.azulzinho {
     color: #45B4EB;
+    font-weight: 600;
 }
 
-.conteudo-pag-registrar .botao_registrar{
+.conteudo-pag-registrar .botao_registrar, .conteudo-pag-login .botao_registrar{
     background: #45B4EB;
     height: 40px;
     font-size: 24px
@@ -57,4 +67,19 @@ h1.crie-conta{
     height: 31px;
     right: 10px;
     cursor: pointer;
+}
+
+.forms-login{
+    border-radius: 8px;
+    border: 2px solid #45B4EB;
+    background: #302F2F;
+}
+
+.logo-entrar{
+    width: 78px;
+    height: 70px;
+}
+
+.esqueceu-senha{
+    font-size: 14px;
 }
