@@ -13,9 +13,15 @@ lm = LoginManager(app)
 db.init_app(app)
 lm.init_app(app)
 
-@app.route('/')
-def index():
-    return render_template('pagina-base-entrar.html')
+@app.route('/registrar')
+def registrar():
+    return render_template('pagina-registrar.html')
+
+@app.route('/login')
+def login():
+    return render_template('pagina-login.html')
+
+
 
 if __name__ == '__main__':
     app.run()

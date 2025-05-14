@@ -1,0 +1,37 @@
+{%extends 'pagina-base-entrar.html'%}
+
+{% block titulo %} 
+    Login
+{% endblock %}
+
+{%block conteudo%}
+
+<div class="d-flex flex-column conteudo-pag-login gap-4 align-items-center justify-content-center w-100 h-100 row">
+    <div class="d-flex flex-column align-items-center justify-content-center col-4 gap-3">
+        <img src="/static/img/Logo.svg" alt="" class="logo-entrar">
+        <h1 class="kanit entre-conta fw-bold">Entre em Icevania!</h1>
+    </div>
+    <div class="forms-login p-3 col-4">
+        <form action="" class="d-flex flex-column p-2 gap-2">
+            <label for="username" class="text-light">Usuário ou e-mail</label>
+            <input type="text" id="username" name="username" required class="rounded border-0 p-2 text-light" placeholder="Usuário ou e-mail">
+        
+            <div class="d-flex flex-column password-container position-relative">
+                <label for="senha" class="text-light">Senha</label>
+                <input type="password" id="senha" name="senha" required class="rounded border-0 p-2 text-light" placeholder="Digite a senha">
+                <img src="/static/img/olho-fechado.png" id="toggleSenha" class="toggle-password position-absolute top-50" data-input="senha" alt="Ver senha">
+            </div>
+            <a href="#" class="azulzinho esqueceu-senha d-flex w-100 justify-content-end">Esqueceu a senha?</a>
+
+            <input type="submit" value="Entrar" class="botao_registrar border-0 rounded text-light fw-bold kanit mt-3">
+        </form>
+        <div class="naptemconta d-flex gap-1 justify-content-end w-100 pe-2">
+            <p class="text-light">Não tem uma conta?</p>
+            <a href="/registrar" class="azulzinho">Registre-se</a>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/script.js"></script>
+
+{%endblock%}

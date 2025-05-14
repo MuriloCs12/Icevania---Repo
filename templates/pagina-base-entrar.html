@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block titulo %} {% endblock %}</title>
     <!-- bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
     <!-- fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,16 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 
 </head>
-<body class="bg-dark">
-    
+<body class="body-entrar">
+    <section class="w-100 h-100">
+        <div class="position-relative">
+            <img class="onda-entrar position-absolute" src="/static/img/onda-superior-esquerdo.svg" alt="">
+        </div>
+        <div class="position-absolute bottom-0 end-0 z-index-1">
+            <img class="onda-entrar" src="/static/img/onda-inferior-direito.svg" alt="">
+        </div>
+        {%block conteudo%}
+        {%endblock%}
+    </section>
 </body>
 </html>
