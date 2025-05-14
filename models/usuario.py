@@ -11,4 +11,4 @@ class Usuario(db.model, UserMixin):
     def __init__(self, username, email, senha):
         self.username = username
         self.email = email
-        self.senha = senha
+        self.senha = senha  
