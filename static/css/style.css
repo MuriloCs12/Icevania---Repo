@@ -13,7 +13,7 @@ html, body {
 }
 
 .onda-entrar{
-    width: 576px;
+    width: 480px;
 }
 
 .kanit {
@@ -45,4 +45,16 @@ h1.crie-conta{
 .conteudo-pag-registrar .botao_registrar{
     background: #45B4EB;
     height: 40px;
+    font-size: 24px
+}
+
+.conteudo-pag-registrar{
+    gap: 200px;
+}
+
+.toggle-password{
+    width: 31px;
+    height: 31px;
+    right: 10px;
+    cursor: pointer;
 }

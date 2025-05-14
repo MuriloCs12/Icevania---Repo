@@ -11,7 +11,7 @@
             <h1 class="kanit crie-conta fw-bold">Crie sua conta!</h1>
         </div>
         <div class="col-4 d-flex flex-column align-items-center justify-content-center h-100">
-            <h2 class="kanit fw-bold">Registre-se em Icevania!</h2>
+            <h2 class="kanit fw-bold pb-3">Registre-se em Icevania!</h2>
             <form action="" class="d-flex flex-column gap-2 w-100"> 
                 <label for="username" class="text-light">Nome de usuário</label>
                 <input type="text" id="username" name="username" required class="rounded border-0 p-2 text-light">
@@ -19,16 +19,26 @@
                 <label for="email" class="text-light">Email</label>
                 <input type="email" id="email" name="email" required class="rounded border-0 p-2 text-light">
                 
-                <label for="senha" class="text-light">Senha</label>
-                <input type="password" id="senha" name="senha" required class="rounded border-0 p-2 text-light">
+                <div class="d-flex flex-column password-container position-relative">
+                    <label for="senha" class="text-light">Senha</label>
+                    <input type="password" id="senha" name="senha" required class="rounded border-0 p-2 text-light">
+                    <img src="/static/img/olho-fechado.png" id="toggleSenha" class="toggle-password position-absolute top-50" data-input="senha" alt="Ver senha">
+                </div>
                 
-                <label for="csenha" class="text-light">Confirmar Senha</label>
-                <input type="password" id="csenha" name="csenha" required class="rounded border-0 p-2 text-light">
-
-                <input type="submit" value="Registrar" class="botao_registrar border-0 rounded text-light">
+                <div class="d-flex flex-column password-container position-relative">
+                    <label for="csenha" class="text-light">Confirmar Senha</label>
+                    <input type="password" id="csenha" name="csenha" required class="rounded border-0 p-2 text-light">
+                    <img src="/static/img/olho-fechado.png" id="toggleSenha" class="toggle-password position-absolute top-50" data-input="csenha" alt="Ver senha">
+                </div>
+                
+                <input type="submit" value="Registrar" class="botao_registrar position-relative border-0 rounded text-light fw-bold kanit mt-3">
             </form>
-            <p class="jatemconta text-light">Já tem uma conta? <a href="#">Entrar</a></p>
+            <div class="jatemconta d-flex gap-1 pt-2 justify-content-end w-100 position-relative z-index-2">
+                <p class="text-light">Já tem uma conta?</p>
+                <a href="pagina-login.html">Entrar</a>
+            </div>
         </div>
     </div>
+    <script src="/static/js/script.js"></script>
     
 {%endblock%}
