@@ -1,6 +1,8 @@
 from flask import render_template, request, redirect, flash, Blueprint
 from models.usuario import Usuario
 from utils import db, lm
+import sqlalchemy as sa
+from urllib.parse import urlsplit
 from flask_login import login_user, logout_user, login_required
 import hashlib
 
@@ -28,3 +30,23 @@ def create_usuario():
     else:
         flash ('Erro. Senhas não correspondentes')
         return redirect('/registrar')
+
+@bp_usuarios.route('/entrar', methods=['POST'])
+def authentication_usuario():
+    username = request.form.get('username')
+    senha = request.form.get('senha')
+
+    user = Usuario.query.filter_by(username=username).first()
+
+    if user and user.senha == hashlib.sha256(senha.encode()).hexdigest():
+        login_user(user)
+        next_page = request.args.get('next')
+        if not next_page or urlsplit(next_page).netloc != '':
+            next_page = ('/home')
+        return redirect(next_page)
+    
+    elif username == None or username == '':
+            pass
+    
+    else:
+        flash('Usuário ou senha inválidos.', 'danger')

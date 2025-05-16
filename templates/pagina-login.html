@@ -12,7 +12,7 @@
         <h1 class="kanit entre-conta fw-bold">Entre em Icevania!</h1>
     </div>
     <div class="forms-login p-3 col-4">
-        <form action="" class="d-flex flex-column p-2 gap-2">
+        <form method='post' action="{{url_for('usuarios.authentication_usuario')}}" class="d-flex flex-column p-2 gap-2">
             <label for="username" class="text-light">Usuário ou e-mail</label>
             <input type="text" id="username" name="username" required class="rounded border-0 p-2 text-light" placeholder="Usuário ou e-mail">
         
