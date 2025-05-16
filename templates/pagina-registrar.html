@@ -11,8 +11,16 @@
             <h1 class="kanit crie-conta fw-bold">Crie sua conta!</h1>
         </div>
         <div class="col-4 d-flex flex-column align-items-center justify-content-center h-100">
+            {% set mensagens = get_flashed_messages() %} 
+            {% if mensagens %}     
+                <div id = "flash-message" class='alert alertbg text-light d-flex justify-content-center w-50 m-0' role="alert">
+                    {% for msg in mensagens %}
+                        {{ msg }}
+                    {% endfor %}
+                </div>
+            {% endif %}
             <h2 class="kanit fw-bold pb-3">Registre-se em Icevania!</h2>
-            <form action="" class="d-flex flex-column gap-2 w-100"> 
+            <form method='post' action="{{url_for('usuarios.create_usuario')}}" class="d-flex flex-column gap-2 w-100"> 
                 <label for="username" class="text-light">Nome de usuário</label>
                 <input type="text" id="username" name="username" required class="rounded border-0 p-2 text-light" placeholder="Usuário">
 

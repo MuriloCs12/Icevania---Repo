@@ -1,12 +1,12 @@
-from app import db
+from utils import db
 from flask_login import UserMixin
 
-class Usuario(db.model, UserMixin):
+class Usuario(db.Model, UserMixin):
     __tablename__ = 'usuarios'
-    id = Column(db.Integer, primary_key=True)
-    username = Column(db.String(20))
-    email = Column(db.String(100))
-    senha = Column(db.String(100))
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20))
+    email = db.Column(db.String(100))
+    senha = db.Column(db.String(100))
 
     def __init__(self, username, email, senha):
         self.username = username
