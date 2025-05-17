@@ -6,6 +6,7 @@ from urllib.parse import urlsplit
 from flask_login import login_user, logout_user, login_required
 import hashlib
 
+
 bp_usuarios = Blueprint("usuarios", __name__, template_folder='templates')
 
 @lm.user_loader
@@ -21,6 +22,11 @@ def create_usuario():
     senha_hash = hashlib.sha256(senha.encode())
     csenha = request.form.get('csenha')
     
+    username_existente = Usuario.query.filter_by(username=username).first()
+    if username_existente:
+        flash('Nome de usuário já está em uso')
+        return redirect('/registrar')
+    
     if senha == csenha:
         usuario = Usuario(username, email, senha_hash.hexdigest())
         db.session.add(usuario)
@@ -31,22 +37,20 @@ def create_usuario():
         flash ('Erro. Senhas não correspondentes')
         return redirect('/registrar')
 
-@bp_usuarios.route('/entrar', methods=['POST'])
-def authentication_usuario():
-    username = request.form.get('username')
+@bp_usuarios.route('/auth_usuario', methods=['POST'])
+def autenticar_usuario():
+    login = request.form.get('login')
     senha = request.form.get('senha')
 
-    user = Usuario.query.filter_by(username=username).first()
+    user = Usuario.query.filter((Usuario.username == login) | (Usuario.email == login)).first()
 
     if user and user.senha == hashlib.sha256(senha.encode()).hexdigest():
         login_user(user)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '':
-            next_page = ('/home')
+            next_page = ('/dashboard')
         return redirect(next_page)
     
-    elif username == None or username == '':
-            pass
-    
-    else:
-        flash('Usuário ou senha inválidos.', 'danger')
+  
+    flash('Usuário ou senha inválidos.', 'danger')
+    return redirect('/entrar')

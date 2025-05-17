@@ -8,6 +8,10 @@ html, body {
     height: 100%;
 }
 
+.alertbg{
+    background-color: #45B4EB;
+}
+
 .body-entrar {
     background-color: #171717;
 }
@@ -20,16 +24,12 @@ html, body {
     font-family: "Kanit", sans-serif;
 }
 
-h1.crie-conta, h1.entre-conta{
+h1.crie-conta, h1.entre-conta, .conteudo-pag-registrar h2, .aviso{
     color: #45B4EB;
 }
 
 h1.entre-conta{
     font-size: 32px;
-}
-
-.conteudo-pag-registrar h2{
-    color: #45B4EB
 }
 
 .conteudo-pag-registrar label, .conteudo-pag-login label{

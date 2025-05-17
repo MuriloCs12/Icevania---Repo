@@ -25,6 +25,9 @@ def registrar():
 def login():
     return render_template('pagina-login.html')
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('futuro-dashboard.html')
 
 
 if __name__ == '__main__':
