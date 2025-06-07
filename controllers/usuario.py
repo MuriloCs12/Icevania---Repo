@@ -5,6 +5,8 @@ import sqlalchemy as sa
 from urllib.parse import urlsplit
 from flask_login import login_user, logout_user, login_required
 import hashlib
+from werkzeug.utils import secure_filename
+import os
 
 
 bp_usuarios = Blueprint("usuarios", __name__, template_folder='templates')
@@ -21,6 +23,7 @@ def create_usuario():
     senha = request.form.get('senha')
     senha_hash = hashlib.sha256(senha.encode())
     csenha = request.form.get('csenha')
+    img_perfil = request.files['img_perfil']
     
     username_existente = Usuario.query.filter_by(username=username).first()
     if username_existente:
@@ -28,11 +31,23 @@ def create_usuario():
         return redirect('/registrar')
     
     if senha == csenha:
-        usuario = Usuario(username, email, senha_hash.hexdigest())
+        from app import app
+
+        filepath = None
+
+        if img_perfil:
+            filename = secure_filename(img_perfil.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            img_perfil.save(filepath)
+
+
+        usuario = Usuario(username, email, senha_hash.hexdigest(), image_path=filepath)
         db.session.add(usuario)
         db.session.commit()
+
+        
         flash ('Dados cadastrados com sucesso')
-        return redirect('/entrar')
+        return redirect('/')
     else:
         flash ('Erro. Senhas não correspondentes')
         return redirect('/registrar')
@@ -53,4 +68,4 @@ def autenticar_usuario():
     
   
     flash('Usuário ou senha inválidos.', 'danger')
-    return redirect('/entrar')
+    return redirect('/')

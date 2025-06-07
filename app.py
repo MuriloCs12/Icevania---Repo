@@ -4,15 +4,18 @@ from flask_login import LoginManager,login_user, logout_user, login_required, cu
 from flask_migrate import Migrate
 from controllers.usuario import bp_usuarios
 from utils import db, lm
+import os
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 
 app.config['SECRET_KEY'] = 'abuble'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dados.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['UPLOAD_FOLDER'] = 'static/uploads'
 app.register_blueprint(bp_usuarios, url_prefix = '/usuarios')
 migrate = Migrate(app, db)
 
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 db.init_app(app)
 lm.init_app(app)
@@ -21,11 +24,12 @@ lm.init_app(app)
 def registrar():
     return render_template('pagina-registrar.html')
 
-@app.route('/login')
+@app.route('/')
 def login():
     return render_template('pagina-login.html')
 
 @app.route('/dashboard')
+@login_required
 def dashboard():
     return render_template('futuro-dashboard.html')
 
