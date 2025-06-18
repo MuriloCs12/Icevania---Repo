@@ -7,8 +7,10 @@ class Usuario(db.Model, UserMixin):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(100), nullable=False)
     senha = db.Column(db.String(100), nullable=False)
+    role = db.Column(db.String(50), nullable=False, default="user")
 
-    def __init__(self, username, email, senha):
+    def __init__(self, username, email, senha, role):
         self.username = username
         self.email = email
         self.senha = senha  
+        self.role = role
