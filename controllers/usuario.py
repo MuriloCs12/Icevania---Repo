@@ -21,6 +21,7 @@ def create_usuario():
     senha = request.form.get('senha')
     senha_hash = hashlib.sha256(senha.encode())
     csenha = request.form.get('csenha')
+    role = "user"
     
     username_existente = Usuario.query.filter_by(username=username).first()
     if username_existente:
@@ -28,11 +29,11 @@ def create_usuario():
         return redirect('/registrar')
     
     if senha == csenha:
-        usuario = Usuario(username, email, senha_hash.hexdigest())
+        usuario = Usuario(username, email, senha_hash.hexdigest(), role)
         db.session.add(usuario)
         db.session.commit()
         flash ('Dados cadastrados com sucesso')
-        return redirect('/entrar')
+        return redirect('/')
     else:
         flash ('Erro. Senhas não correspondentes')
         return redirect('/registrar')

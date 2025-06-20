@@ -1,12 +1,12 @@
-from flask import Flask, render_template, flash, abort
+from flask import Flask, render_template, flash, abort, redirect
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager,login_user, logout_user, login_required, current_user, request
+from flask_login import LoginManager,login_user, logout_user, login_required, current_user
 from flask_migrate import Migrate
 from controllers.usuario import bp_usuarios
+from controllers.admin import bp_admin
 from utils import db, lm
 from roles import role_required
-import hashlib
-from models import Usuario
+from models.usuario import Usuario
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
 
@@ -14,6 +14,7 @@ app.config['SECRET_KEY'] = 'abuble'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dados.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.register_blueprint(bp_usuarios, url_prefix = '/usuarios')
+app.register_blueprint(bp_admin, url_prefix = '/admin')
 migrate = Migrate(app, db)
 
 
@@ -24,9 +25,14 @@ lm.init_app(app)
 def registrar():
     return render_template('pagina-registrar.html')
 
-@app.route('/login')
+@app.route('/')
 def login():
     return render_template('pagina-login.html')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/')
 
 @app.route('/dashboard')
 def dashboard():
@@ -35,14 +41,6 @@ def dashboard():
 @app.route("/admin/criar", methods=["GET", "POST"])
 @role_required("superadmin")
 def criar_admin():
-    if request.method == "POST":
-        email = request.form["email"]
-        senha = request.form["senha"]
-        senhahash = hashlib.sha256(senha.encode())
-        novo_admin = Usuario(email=email, password=senha, role="admin")
-        db.session.add(novo_admin)
-        db.session.commit()
-        return "Admin criado com sucesso!"
     return render_template("form_criar_admin.html")
 
 @app.route("/admin/lista")

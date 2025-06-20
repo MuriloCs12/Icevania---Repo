@@ -1,0 +1,35 @@
+{%extends 'pagina-base-entrar.html'%}
+
+{% block titulo %} 
+    Formulário para novo admin
+{% endblock %}
+
+{%block conteudo%}
+
+<div class="d-flex flex-column conteudo-pag-login gap-4 align-items-center justify-content-center w-100 h-100 row">
+    <div class="d-flex flex-column align-items-center justify-content-center col-4 gap-3">
+        <img src="/static/img/Logo.svg" alt="" class="logo-entrar">
+        <h1 class="kanit entre-conta fw-bold">Crie uma novo admin!</h1>
+    </div>
+    <div class="forms-login p-3 col-4">
+        <form method='post' action="{{url_for('admins.create_admin')}}" class="d-flex flex-column p-2 gap-2">
+            <label for="nome" class="text-light">Usuário</label>
+            <input type="text" id="nome" name="nome" required class="rounded border-0 p-2 text-light" placeholder="Usuário">
+
+            <label for="email" class="text-light">E-mail</label>
+            <input type="text" id="email" name="email" required class="rounded border-0 p-2 text-light" placeholder="E-mail">
+        
+            <div class="d-flex flex-column password-container position-relative">
+                <label for="senha" class="text-light">Senha</label>
+                <input type="password" id="senha" name="senha" required class="rounded border-0 p-2 text-light" placeholder="Digite a senha">
+                <img src="/static/img/olho-fechado.png" id="toggleSenha" class="toggle-password position-absolute top-50" data-input="senha" alt="Ver senha">
+            </div>
+
+            <input type="submit" value="Entrar" class="botao_registrar border-0 rounded text-light fw-bold kanit mt-3">
+        </form>
+    </div>
+</div>
+
+<script src="/static/js/script.js"></script>
+
+{%endblock%}

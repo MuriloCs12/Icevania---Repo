@@ -1,0 +1,14 @@
+{%extends 'pagina-base-entrar.html'%}
+
+{% block titulo %} 
+    Listagem de Usuários
+{% endblock %}
+
+{%block conteudo%}
+    {%for i in admins%}
+    <div class="d-flex flex-column mb-3">
+        <h1>{{i.nome}}</h1>
+        <h2>{{i.email}}</h2>
+    </div>
+    {%endfor%}
+{%endblock%}
