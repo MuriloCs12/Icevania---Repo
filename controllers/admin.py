@@ -9,7 +9,7 @@ import hashlib
 
 bp_admin = Blueprint("admins", __name__, template_folder='templates')
 
-@bp_admin.route('/admin', methods=['POST'])
+@bp_admin.route('/', methods=['POST'])
 def create_admin():
     if request.method == "POST":
         nome = request.form["nome"]
@@ -21,9 +21,16 @@ def create_admin():
         db.session.commit()
         return redirect("/dashboard")
     
-@bp_admin.route('/admin', methods=['POST'])
+@bp_admin.route('/promover/<int:id>', methods=['GET'])
 def promover_admin(id):
     user = Usuario.query.get_or_404(id)
     user.role = 'admin'
+    db.session.commit()
+    return redirect("/admin/lista")
+
+@bp_admin.route('/despromover/<int:id>', methods=['GET'])
+def despromover_admin(id):
+    user = Usuario.query.get_or_404(id)
+    user.role = 'user'
     db.session.commit()
     return redirect("/admin/lista")

@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                    <button onclick="{{url_for('admins.promover_admin', id=usuario)}}" type="button" class="btn btn-primary">Mudar papel</button>
+                                    <a href="{{ url_for('admins.promover_admin', id=usuario.id) }}" class="btn btn-primary">Mudar papel</a>
                                 </div>
                             </div>
                         </div>

@@ -9,9 +9,35 @@
         <div id="lista" class="d-flex flex-column rounded-3 gap-2 p-2">
             <h2 class="text-light text-center mb-4 mt-4">Lista de admins cadastrados</h2>
             {%for admin in admins%}
-                <div class="admin d-flex flex-column text-light p-4 rounded-2">
-                    <h1>{{admin.username}}</h1>
-                    <h2>{{admin.email}}</h2>
+                <div class="admin d-flex text-light p-4 rounded-2 justify-content-between">
+                    <div class="info_admin">
+                        <h1>{{admin.username}}</h1>
+                        <h2>{{admin.email}}</h2>
+                    </div>
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-ban" viewBox="0 0 16 16">
+                            <path d="M15 8a6.97 6.97 0 0 0-1.71-4.584l-9.874 9.875A7 7 0 0 0 15 8M2.71 12.584l9.874-9.875a7 7 0 0 0-9.874 9.874ZM16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content rounded-2 text-light">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Mudar papel de {{admin.username}}</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>A alteração feita por você irá alterar o papel de admin para usuário na plataforma Icevania</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <a href="{{ url_for('admins.despromover_admin', id=admin.id) }}" class="btn btn-primary">Mudar papel</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             {%endfor%}
         </div>
