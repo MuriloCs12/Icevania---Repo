@@ -83,3 +83,27 @@ h1.entre-conta{
 .esqueceu-senha{
     font-size: 14px;
 }
+
+.img-fundo{
+    z-index: -1;
+}
+
+.admin{
+    background-color: #302F2F;
+}
+
+#lista{
+    background-color: black;
+}
+
+.main_lista{
+    height: 100vh;
+}
+
+.three-dots-vertical{
+    height: 40px;
+}
+
+.modal-content{
+    background-color: black;
+}

@@ -49,15 +49,13 @@ def listar_admins():
     admins = Usuario.query.filter(Usuario.role == "admin").all()
     return render_template("lista_admins.html", admins=admins)
 
-@app.route("/admin/promover/<int:user_id>")
+@app.route("/admin/promover")
 @role_required("superadmin")
-def promover_para_superadmin(user_id):
-    user = Usuario.query.get(user_id)
-    if user and user.role == "admin":
-        user.role = "superadmin"
-        db.session.commit()
-        return "Promovido com sucesso!"
-    abort(404)
+def promover_para_admin():
+    usuarios = Usuario.query.filter(
+        (Usuario.role != "admin") & (Usuario.role != "superadmin")
+    ).all()
+    return render_template("lista_promover.html", usuarios=usuarios)
 
 
 if __name__ == '__main__':

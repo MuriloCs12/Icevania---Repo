@@ -20,3 +20,10 @@ def create_admin():
         db.session.add(novo_admin)
         db.session.commit()
         return redirect("/dashboard")
+    
+@bp_admin.route('/admin', methods=['POST'])
+def promover_admin(id):
+    user = Usuario.query.get_or_404(id)
+    user.role = 'admin'
+    db.session.commit()
+    return redirect("/admin/lista")
